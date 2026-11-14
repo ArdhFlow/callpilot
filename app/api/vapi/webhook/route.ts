@@ -21,6 +21,7 @@ export async function POST(req: NextRequest) {
 
   if (msg.type === "tool-calls") {
     const list = msg.toolCallList ?? msg.toolCalls ?? [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const results = list.map((tc: any) => {
       const name = tc.name ?? tc.function?.name;
       let args = tc.arguments ?? tc.function?.arguments ?? {};
